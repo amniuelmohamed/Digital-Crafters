@@ -10,6 +10,10 @@
 body {
     font-family: "Poppins", sans-serif;
 }
+
+html {
+    scroll-behavior: smooth;
+}
 /* End Normalize */
 
 /* Start Variables */
@@ -38,6 +42,12 @@ body {
     word-spacing: 2px;
     margin: 0 auto;
     text-align: center;
+    box-shadow: 0 13px 36px -13px black;
+    transition: transform 0.3s;
+}
+
+.claim-btn:hover {
+    transform: translateY(-5px);
 }
 
 .claim-btn.primary {
@@ -129,9 +139,142 @@ body {
         width: 1140px;
     }
 }
-
 /* End Containers */
 
+/* Start Settings Box */
+.settings-box {
+    position: fixed;
+    top: 0;
+    left: -200px;
+    z-index: 999;
+    background-color: white;
+    min-height: 100vh;
+    width: 200px;
+    padding: 10px;
+    transition: 0.3s;
+}
+
+.settings-box.show {
+    left: 0;
+}
+
+.settings-box .open-btn {
+    width: 36px;
+    height: 36px;
+    position: absolute;
+    right: -36px;
+    top: 125px;
+    background-color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+
+.settings-box .settings-container > div {
+    background-color: #eee;
+    padding: 10px;
+    text-align: center;
+    margin-bottom: 10px;
+}
+
+.settings-box .settings-container > div > h4 {
+    color: #666;
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.settings-box .colors .content {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.settings-box .colors span {
+    display: inline-block;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+.settings-box .colors span.active {
+    border: 3px solid white;
+    box-sizing: content-box;
+    -moz-box-sizing: content-box;
+    -webkit-box-sizing: content-box;
+}
+
+.settings-box .change-background .content span,
+.settings-box .show-bullets .content span {
+    font-size: 12px;
+    font-weight: bold;
+    background-color: var(--primary-color);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 4px;
+    cursor: pointer;
+    opacity: 0.5;
+}
+
+.settings-box .change-background .content span.active,
+.settings-box .show-bullets .content span.active {
+    opacity: 1;
+}
+
+.settings-box .reset-btn {
+    background-color: #f44336;
+    color: white;
+    padding: 10px;
+    display: block;
+    text-align: center;
+    border-radius: 6px;
+    font-weight: bold;
+    cursor: pointer;
+}
+/* End Settings Box */
+
+/* Start Bullets */
+.bullets {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    position: fixed;
+    z-index: 99;
+    right: -50px;
+    top: 50%;
+    transform: translateY(-50%);
+    transition: 0.3s;
+}
+
+.bullets.showed {
+    display: flex;
+}
+
+.bullets.can-show {
+    right: 10px;
+}
+
+.bullets span {
+    width: 16px;
+    height: 16px;
+    border-radius: 50%;
+    background-color: transparent;
+    border: 2px solid var(--primary-color);
+    box-shadow: 0px 0px 25px black;
+    cursor: pointer;
+}
+
+.bullets span.active {
+    background-color: var(--primary-color);
+}
+/* End Bullets */
+
+/* Start Header */
 header {
     position: absolute;
     top: 20px;
@@ -201,13 +344,21 @@ nav {
     top: 0;
     width: 100%;
     height: 100%;
-    background-color: rgba(134, 84, 208, 0.9);
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
     gap: 15px;
     transition: 0.3s ease-in-out;
+}
+
+nav::before {
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    opacity: 0.95;
 }
 
 nav.active {
@@ -293,8 +444,11 @@ header .request-btn:not(.mobile) {
         top: auto;
         width: auto;
         height: auto;
-        background-color: transparent;
         display: block;
+    }
+
+    nav::before {
+        background-color: transparent;
     }
 
     nav a {
@@ -306,7 +460,9 @@ header .request-btn:not(.mobile) {
         height: 2px;
     }
 }
+/* End Header */
 
+/* Start Intro */
 section.intro {
     background-image: url("../imgs/intro.jpg");
     background-size: cover;
@@ -316,6 +472,7 @@ section.intro {
     justify-content: center;
     align-items: center;
     position: relative;
+    transition: background-image 3s;
 }
 
 section.intro::before {
@@ -358,20 +515,11 @@ section.intro p {
     color: white;
     font-size: 18px;
     font-weight: 300;
+    margin-bottom: 50px;
 }
+/* End Intro */
 
-section.intro a.claim-btn {
-    box-shadow: 0 0 50px 0 black;
-    margin-top: 50px;
-    transition: 0.3s;
-}
-
-section.intro a.claim-btn:hover {
-    box-shadow: 0 0 50px 0 var(--primary-color);
-    color: black;
-}
-
-/* Start About Section */
+/* Start About */
 section.about {
     padding-top: var(--main-section-padding);
     padding-bottom: var(--main-section-padding);
@@ -386,13 +534,124 @@ section.about p {
     font-weight: 300;
 }
 
+section.about .container > p:last-of-type {
+    margin-bottom: 50px;
+}
+
 section.about img {
     display: block;
     max-width: 100%;
     margin: 40px 0 20px;
 }
+/* End About */
 
-section.about a.claim-btn {
-    box-shadow: 0 13px 36px -13px black;
-    margin-top: 50px;
+/* Start Testimonials */
+section.testimonials {
+    padding-top: var(--main-section-padding);
+    padding-bottom: var(--main-section-padding);
+    overflow: hidden;
 }
+
+section.testimonials .inner-container {
+    display: flex;
+    width: 100%;
+    margin: 0 auto;
+    position: relative;
+    transition: 0.5s;
+}
+
+section.testimonials .box {
+    background-color: white;
+    box-shadow: 0px 5px 30px -20px black;
+    position: relative;
+    padding: 90px 60px 30px;
+    text-align: center;
+    border-radius: 10px;
+    min-width: 100%;
+    margin: 0 auto;
+    opacity: 0.3;
+}
+
+section.testimonials .box.active {
+    opacity: 1;
+}
+
+@media (min-width: 992px) {
+    section.testimonials .inner-container {
+        width: 650px;
+    }
+}
+
+section.testimonials .box .avatar {
+    position: absolute;
+    top: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    width: 96px;
+    height: 96px;
+}
+
+section.testimonials .box p {
+    font-weight: 300;
+    font-size: 15px;
+    margin-bottom: 40px;
+}
+
+section.testimonials .box .author {
+    font-size: 15px;
+    font-weight: bold;
+    color: var(--primary-heading-color);
+}
+
+section.testimonials .box .author .name {
+    color: var(--primary-color);
+}
+
+section.testimonials .slider-controls {
+    margin-top: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+section.testimonials .slider-controls .prev,
+section.testimonials .slider-controls .next {
+    width: 25px;
+    height: 25px;
+    background-color: #eee;
+    border-radius: 50%;
+    border: 1px solid #8888;
+    color: #888;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+section.testimonials .slider-controls .prev.disabled,
+section.testimonials .slider-controls .next.disabled {
+    opacity: 0.5;
+    cursor: no-drop;
+    pointer-events: none;
+}
+
+section.testimonials .slider-controls .testimonials-bullets {
+    display: flex;
+    gap: 5px;
+}
+
+section.testimonials .slider-controls .testimonials-bullets span {
+    width: 7px;
+    height: 7px;
+    background-color: #eee;
+    border-radius: 50%;
+    cursor: pointer;
+}
+
+section.testimonials .slider-controls .testimonials-bullets span.active {
+    background-color: #888;
+}
+/* End Testimonials */

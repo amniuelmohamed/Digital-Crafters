@@ -6,6 +6,7 @@
         <title>Digital Crafters</title>
         <!-- <link rel="stylesheet" href="css/normalize.css" /> -->
         <link rel="stylesheet" href="css/main.css" />
+        <link rel="stylesheet" href="css/all.min.css" />
         <link rel="preconnect" href="https://fonts.googleapis.com" />
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
         <link
@@ -14,6 +15,42 @@
         />
     </head>
     <body>
+        <div class="settings-box">
+            <i class="fa-solid fa-user-gear open-btn"></i>
+            <div class="settings-container">
+                <div class="colors">
+                    <h4>Primary Color</h4>
+                    <div class="content">
+                        <span class="active" data-mainColor="#673fbf"></span>
+                        <span data-mainColor="#e91e63"></span>
+                        <span data-mainColor="#ff9800"></span>
+                        <span data-mainColor="#03a9f4"></span>
+                        <span data-mainColor="#ff5722"></span>
+                    </div>
+                </div>
+                <div class="change-background">
+                    <h4>Change Background</h4>
+                    <div class="content">
+                        <span class="active">Yes</span>
+                        <span>No</span>
+                    </div>
+                </div>
+                <div class="show-bullets">
+                    <h4>Show Bullets</h4>
+                    <div class="content">
+                        <span class="active">Yes</span>
+                        <span>No</span>
+                    </div>
+                </div>
+            </div>
+            <span class="reset-btn">Reset Options</span>
+        </div>
+        <div class="bullets showed">
+            <span class="active"></span>
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
         <header>
             <div class="burger-menu">
                 <span></span>
@@ -39,12 +76,12 @@
                         design, content and tool you need to become unstoppable.
                         2018 is the year you become rich.
                     </p>
-                    <a href="#contact-section" class="claim-btn primary"
+                    <a href="#contact" class="claim-btn primary"
                         >Claim Your Free Consultation</a
                     >
                 </div>
             </section>
-            <section class="about">
+            <section class="about" id="about">
                 <div class="main-heading">
                     <p>How We Can Help You</p>
                     <h2 class="primary">
@@ -66,9 +103,90 @@
                         blocks… and then disappear entirely. Luckily, you found
                         us, and no one can stop you now from working with us.
                     </p>
-                    <a href="#contact-section" class="claim-btn secondary"
+                    <a href="#contact" class="claim-btn secondary"
                         >Claim Your Free Consultation</a
                     >
+                </div>
+            </section>
+            <section class="testimonials" id="testimonials">
+                <div class="container">
+                    <div class="inner-container">
+                        <div class="box">
+                            <img
+                                src="imgs/avatar01.png"
+                                alt="avatar01"
+                                class="avatar"
+                            />
+                            <p>
+                                We have worked with Digital Crafters for several
+                                years across a range of projects. They have
+                                built the critical elements of our system and
+                                have always delivered a strong return on
+                                investment. Moreover, they are a pleasure to
+                                work with — always enthusiastic, professional
+                                and with a positive culture. I would, and have,
+                                recommended them to others in need of flexible
+                                development capacity.
+                            </p>
+                            <div class="author">
+                                <span class="name">Todd Quinto</span> - CEO at
+                                Endave Software
+                            </div>
+                        </div>
+                        <div class="box">
+                            <img
+                                src="imgs/avatar01.png"
+                                alt="avatar01"
+                                class="avatar"
+                            />
+                            <p>
+                                We have worked with Digital Crafters for several
+                                years across a range of projects. They have
+                                built the critical elements of our system and
+                                have always delivered a strong return on
+                                investment. Moreover, they are a pleasure to
+                                work with — always enthusiastic, professional
+                                and with a positive culture. I would, and have,
+                                recommended them to others in need of flexible
+                                development capacity.
+                            </p>
+                            <div class="author">
+                                <span class="name">Todd Quinto</span> - CEO at
+                                Endave Software
+                            </div>
+                        </div>
+                        <div class="box">
+                            <img
+                                src="imgs/avatar01.png"
+                                alt="avatar01"
+                                class="avatar"
+                            />
+                            <p>
+                                We have worked with Digital Crafters for several
+                                years across a range of projects. They have
+                                built the critical elements of our system and
+                                have always delivered a strong return on
+                                investment. Moreover, they are a pleasure to
+                                work with — always enthusiastic, professional
+                                and with a positive culture. I would, and have,
+                                recommended them to others in need of flexible
+                                development capacity.
+                            </p>
+                            <div class="author">
+                                <span class="name">Todd Quinto</span> - CEO at
+                                Endave Software
+                            </div>
+                        </div>
+                    </div>
+                    <div class="slider-controls">
+                        <span class="prev"
+                            ><i class="fa-solid fa-chevron-left"></i
+                        ></span>
+                        <div class="testimonials-bullets"></div>
+                        <span class="next">
+                            <i class="fa-solid fa-chevron-right"></i>
+                        </span>
+                    </div>
                 </div>
             </section>
         </main>
