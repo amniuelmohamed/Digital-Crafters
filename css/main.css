@@ -86,7 +86,7 @@ html {
     color: white;
 }
 
-.main-heading h2.primary {
+.main-heading.primary h2 {
     color: var(--primary-heading-color);
 }
 
@@ -99,7 +99,7 @@ html {
     background-color: white;
 }
 
-.main-heading h2.primary::after {
+.main-heading.primary h2::after {
     background-color: var(--primary-color);
 }
 
@@ -107,6 +107,10 @@ html {
     font-size: 15px;
     font-weight: 300;
     color: white;
+}
+
+.main-heading.primary p.description {
+    color: black;
 }
 
 /* End Components */
@@ -711,3 +715,44 @@ section.services .box p {
     font-weight: 300;
 }
 /* End Services */
+
+/* Start Infos */
+section.infos {
+    padding-top: var(--main-section-padding);
+    padding-bottom: var(--main-section-padding);
+}
+
+section.infos .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 30px;
+    margin-top: 100px;
+}
+
+section.infos .box {
+    background-color: var(--primary-color);
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 30px;
+    border-radius: 10px;
+    text-align: center;
+    box-shadow: 0px 10px 20px 0px rgb(0 0 0 / 30%);
+}
+
+section.infos .box i {
+    font-size: 40px;
+}
+
+section.infos .box .number {
+    font-size: 50px;
+    margin: 20px 0;
+    font-weight: bold;
+    background-color: white;
+    color: black;
+    width: 100%;
+    border-radius: 10px;
+}
+
+/* End Infos */

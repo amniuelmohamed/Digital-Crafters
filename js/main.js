@@ -184,6 +184,28 @@ Array.from(testiBulletsDiv.children).forEach((el, idx) => {
 });
 
 /*
+    Increase info numbers onscroll
+*/
+let numbersToIncrease = Array.from(
+    document.querySelectorAll("section.infos .box .number")
+);
+let infoSection = document.querySelector("section.infos");
+window.onscroll = function () {
+    if (this.scrollY > infoSection.offsetTop - 400) {
+        numbersToIncrease.forEach((el) => {
+            if (el.innerHTML == 0) {
+                let goalNum = parseInt(el.dataset.goal);
+
+                let increment = setInterval(() => {
+                    el.innerHTML++;
+                    if (el.innerHTML == goalNum) clearInterval(increment);
+                }, 1000 / goalNum);
+            }
+        });
+    }
+};
+
+/*
     Functions
 */
 function changeBackgroundImg() {
