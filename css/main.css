@@ -18,7 +18,7 @@ html {
 
 /* Start Variables */
 :root {
-    --main-section-padding: 60px;
+    --main-section-padding: 100px;
     --primary-color: #673fbf;
     --secondary-color: #8654d0;
     --third-color: #c053a7;
@@ -83,6 +83,7 @@ html {
 .main-heading h2 {
     line-height: var(--main-line-height);
     font-size: 34px;
+    color: white;
 }
 
 .main-heading h2.primary {
@@ -95,6 +96,7 @@ html {
     height: 4px;
     width: 60px;
     margin: 30px auto;
+    background-color: white;
 }
 
 .main-heading h2.primary::after {
@@ -104,6 +106,7 @@ html {
 .main-heading p.description {
     font-size: 15px;
     font-weight: 300;
+    color: white;
 }
 
 /* End Components */
@@ -416,6 +419,7 @@ header .request-btn {
 header .request-btn.mobile {
     font-size: 20px;
     margin-top: 20px;
+    z-index: 10;
 }
 
 header .request-btn:not(.mobile) {
@@ -523,6 +527,7 @@ section.intro p {
 section.about {
     padding-top: var(--main-section-padding);
     padding-bottom: var(--main-section-padding);
+    position: relative;
 }
 
 section.about .container {
@@ -547,9 +552,10 @@ section.about img {
 
 /* Start Testimonials */
 section.testimonials {
-    padding-top: var(--main-section-padding);
+    padding-top: calc(var(--main-section-padding) + 50px);
     padding-bottom: var(--main-section-padding);
     overflow: hidden;
+    background-color: #f6f6f6;
 }
 
 section.testimonials .inner-container {
@@ -655,3 +661,53 @@ section.testimonials .slider-controls .testimonials-bullets span.active {
     background-color: #888;
 }
 /* End Testimonials */
+
+/* Start Services */
+section.services {
+    padding-top: var(--main-section-padding);
+    padding-bottom: var(--main-section-padding);
+    background-color: #383047;
+}
+
+section.services .container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 90px 30px;
+    margin-top: 100px;
+}
+
+section.services .box {
+    background-color: white;
+    padding: 60px 35px 35px;
+    border-radius: 10px;
+    position: relative;
+}
+
+section.services .box i {
+    background-color: var(--primary-color);
+    font-size: 30px;
+    height: 90px;
+    width: 90px;
+    border-radius: 50%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    position: absolute;
+    top: 0;
+    left: 10%;
+    transform: translateY(-50%);
+}
+
+section.services .box h3 {
+    margin-bottom: 25px;
+    color: var(--primary-heading-color);
+    max-width: 160px;
+    font-size: 20px;
+}
+
+section.services .box p {
+    font-size: 15px;
+    font-weight: 300;
+}
+/* End Services */
