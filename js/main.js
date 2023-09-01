@@ -187,23 +187,67 @@ Array.from(testiBulletsDiv.children).forEach((el, idx) => {
     Increase info numbers onscroll
 */
 let numbersToIncrease = Array.from(
-    document.querySelectorAll("section.infos .box .number")
+    document.querySelectorAll("section.stats .box .number")
 );
-let infoSection = document.querySelector("section.infos");
+let statsSection = document.querySelector("section.stats");
+let started = false;
 window.onscroll = function () {
-    if (this.scrollY > infoSection.offsetTop - 400) {
-        numbersToIncrease.forEach((el) => {
-            if (el.innerHTML == 0) {
+    if (this.scrollY > statsSection.offsetTop - 400) {
+        if (!started) {
+            numbersToIncrease.forEach((el) => {
                 let goalNum = parseInt(el.dataset.goal);
-
                 let increment = setInterval(() => {
                     el.innerHTML++;
                     if (el.innerHTML == goalNum) clearInterval(increment);
                 }, 1000 / goalNum);
-            }
-        });
+            });
+        }
+        started = true;
     }
 };
+
+/*
+    Display Image Gallery on click
+*/
+let galleryImgs = Array.from(
+    document.querySelectorAll("section.gallery .container img")
+);
+let gallerySection = document.querySelector("section.gallery");
+
+galleryImgs.forEach((image) => {
+    image.addEventListener("click", (e) => {
+        // add overlay div
+        let overlayDiv = document.createElement("div");
+        overlayDiv.className = "overlay";
+        gallerySection.appendChild(overlayDiv);
+
+        // create the popup box annd add it
+        let popupDiv = document.createElement("div");
+        popupDiv.className = "zoomed-img";
+        if (e.target.alt) {
+            let popupTitle = document.createElement("h4");
+            popupTitle.appendChild(
+                document.createTextNode(e.target.getAttribute("alt"))
+            );
+            popupDiv.appendChild(popupTitle);
+        }
+        let popupImg = document.createElement("img");
+        popupImg.setAttribute("src", e.target.getAttribute("src"));
+        popupImg.setAttribute("alt", e.target.getAttribute("alt"));
+        popupDiv.appendChild(popupImg);
+        let closeBtn = document.createElement("span");
+        closeBtn.className = "close-btn";
+        closeBtn.innerHTML = '<i class="fa-solid fa-xmark"></i>';
+        popupDiv.appendChild(closeBtn);
+        gallerySection.appendChild(popupDiv);
+
+        // On close popup btn click
+        closeBtn.onclick = function () {
+            overlayDiv.remove();
+            popupDiv.remove();
+        };
+    });
+});
 
 /*
     Functions

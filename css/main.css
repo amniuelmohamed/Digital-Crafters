@@ -24,6 +24,7 @@ html {
     --third-color: #c053a7;
     --main-line-height: 1.2;
     --primary-heading-color: #29384d;
+    --section-bg-color: #383047;
 }
 /* End Variables */
 
@@ -670,7 +671,7 @@ section.testimonials .slider-controls .testimonials-bullets span.active {
 section.services {
     padding-top: var(--main-section-padding);
     padding-bottom: var(--main-section-padding);
-    background-color: #383047;
+    background-color: var(--section-bg-color);
 }
 
 section.services .container {
@@ -716,20 +717,20 @@ section.services .box p {
 }
 /* End Services */
 
-/* Start Infos */
-section.infos {
+/* Start Stats */
+section.stats {
     padding-top: var(--main-section-padding);
     padding-bottom: var(--main-section-padding);
 }
 
-section.infos .container {
+section.stats .container {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
     gap: 30px;
     margin-top: 100px;
 }
 
-section.infos .box {
+section.stats .box {
     background-color: var(--primary-color);
     color: white;
     display: flex;
@@ -741,11 +742,11 @@ section.infos .box {
     box-shadow: 0px 10px 20px 0px rgb(0 0 0 / 30%);
 }
 
-section.infos .box i {
+section.stats .box i {
     font-size: 40px;
 }
 
-section.infos .box .number {
+section.stats .box .number {
     font-size: 50px;
     margin: 20px 0;
     font-weight: bold;
@@ -754,5 +755,76 @@ section.infos .box .number {
     width: 100%;
     border-radius: 10px;
 }
+/* End Stats */
 
-/* End Infos */
+/* Start Gallery */
+section.gallery {
+    padding-top: var(--main-section-padding);
+    padding-bottom: var(--main-section-padding);
+    background-color: var(--section-bg-color);
+}
+
+section.gallery .container {
+    margin-top: 100px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 15px;
+}
+
+section.gallery .container img {
+    max-width: 100%;
+    padding: 5px;
+    background-color: white;
+    cursor: pointer;
+}
+
+section.gallery .zoomed-img {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    background-color: white;
+    padding: 20px;
+    width: 900px;
+    max-width: 90%;
+    z-index: 1001;
+}
+
+section.gallery .zoomed-img h4 {
+    font-size: 20px;
+    text-align: center;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+section.gallery .zoomed-img img {
+    max-width: 100%;
+}
+
+section.gallery .zoomed-img .close-btn {
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 30px;
+    height: 30px;
+    border-radius: 50%;
+    background-color: #f44336;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    transform: translate(50%, -50%);
+    cursor: pointer;
+}
+
+section.gallery .overlay {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: var(--primary-color);
+    opacity: 0.6;
+    z-index: 1000;
+}
+/* End Gallery */
