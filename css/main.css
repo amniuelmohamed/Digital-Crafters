@@ -267,7 +267,7 @@ html {
     right: 10px;
 }
 
-.bullets span {
+.bullets .bullet {
     width: 16px;
     height: 16px;
     border-radius: 50%;
@@ -275,9 +275,34 @@ html {
     border: 2px solid var(--primary-color);
     box-shadow: 0px 0px 25px black;
     cursor: pointer;
+    position: relative;
 }
 
-.bullets span.active {
+.bullets .bullet span {
+    position: absolute;
+    padding: 4px 10px;
+    background-color: var(--primary-color);
+    color: white;
+    top: 50%;
+    right: 25px;
+    transform: translateY(-50%);
+    font-size: 14px;
+}
+
+.bullets .bullet span::before {
+    content: "";
+    position: absolute;
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 7px;
+    border-color: transparent transparent transparent var(--primary-color);
+    top: 50%;
+    right: -14px;
+    transform: translateY(-50%);
+}
+
+.bullets .bullet.active {
     background-color: var(--primary-color);
 }
 /* End Bullets */

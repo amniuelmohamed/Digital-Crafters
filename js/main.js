@@ -128,14 +128,54 @@ showBulletsChoices.forEach((el) => {
     }
 });
 
+// Add bullets
+let sections = Array.from(document.querySelectorAll("section:not(.intro)"));
+let sectionsNumber = sections.length;
+for (let i = 0; i < sectionsNumber; ++i) {
+    let bullet = document.createElement("div");
+    bullet.className = "bullet";
+    bulletsDiv.appendChild(bullet);
+
+    // Add event listener to bullet
+    bullet.addEventListener("click", () => {
+        let desiredSection = sections[i];
+        window.scrollTo({
+            top: desiredSection.offsetTop,
+            left: 0,
+            behavior: "smooth",
+        });
+    });
+
+    bullet.addEventListener("mouseover", () => {
+        let bulletTitle = document.createElement("span");
+        bulletTitle.appendChild(
+            document.createTextNode(sections[i].className.toUpperCase())
+        );
+        bullet.appendChild(bulletTitle);
+    });
+
+    bullet.addEventListener("mouseout", () => {
+        bullet.children[0].remove();
+    });
+}
+
 // Show bullets when arriving to about section
-window.onscroll = function () {
-    if (this.scrollY >= this.innerHeight) {
-        bulletsDiv.classList.add("can-show");
-    } else {
-        bulletsDiv.classList.remove("can-show");
-    }
-};
+window.addEventListener("scroll", () =>
+    this.scrollY >= this.innerHeight
+        ? bulletsDiv.classList.add("can-show")
+        : bulletsDiv.classList.remove("can-show")
+);
+
+// Make the visible section bullet active
+window.addEventListener("scroll", () => {
+    sections.forEach((sec, idx) => {
+        if (isInViewport(sec)) {
+            let bullets = Array.from(bulletsDiv.children);
+            bullets.map((el) => el.classList.remove("active"));
+            bullets[idx].classList.add("active");
+        }
+    });
+});
 
 // On reset options click
 document.querySelector(".settings-box .reset-btn").onclick = function () {
@@ -309,4 +349,11 @@ function updateBullets() {
     testiBullets.forEach((el) => el.classList.remove("active"));
     // add the active class to the current bullet
     testiBullets[currTestimonial].classList.add("active");
+}
+
+function isInViewport(element) {
+    let scrollPosition =
+        document.documentElement.scrollTop || document.body.scrollTop;
+
+    return element.offsetTop <= scrollPosition + 50;
 }
