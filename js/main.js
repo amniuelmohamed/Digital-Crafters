@@ -94,7 +94,7 @@ changeBgChoices.forEach((el) => {
 
 // Show bullets or not
 let bulletsDiv = document.querySelector(".bullets");
-bulletsDiv.classList.add("showed"); //Default
+// bulletsDiv.classList.add("showed"); //Default
 let showBulletsChoices = Array.from(
     document.querySelectorAll(".settings-box .show-bullets .content span")
 );
@@ -181,7 +181,7 @@ window.addEventListener("scroll", () => {
 document.querySelector(".settings-box .reset-btn").onclick = function () {
     colorSpans[0].click();
     changeBgChoices[0].click();
-    showBulletsChoices[0].click();
+    showBulletsChoices[1].click();
 };
 
 /*
