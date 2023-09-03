@@ -5,11 +5,12 @@
     box-sizing: border-box;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
-}
-
-body {
     font-family: "Poppins", sans-serif;
 }
+
+/* body {
+    font-family: "Poppins", sans-serif;
+} */
 
 html {
     scroll-behavior: smooth;
@@ -20,8 +21,7 @@ html {
 :root {
     --main-section-padding: 100px;
     --primary-color: #673fbf;
-    --secondary-color: #8654d0;
-    --third-color: #c053a7;
+    --secondary-color: #c053a7;
     --main-line-height: 1.2;
     --primary-heading-color: #29384d;
     --section-bg-color: #383047;
@@ -45,6 +45,7 @@ html {
     text-align: center;
     box-shadow: 0 13px 36px -13px black;
     transition: transform 0.3s;
+    cursor: pointer;
 }
 
 .claim-btn:hover {
@@ -72,6 +73,7 @@ html {
     max-width: 600px;
     padding: 0 20px;
     margin: 0 auto;
+    position: relative;
 }
 
 .main-heading p:not(.description) {
@@ -307,6 +309,30 @@ html {
 }
 /* End Bullets */
 
+/* Start To Top Button */
+.to-top-btn {
+    position: fixed;
+    right: -50px;
+    bottom: 10px;
+    display: block;
+    color: white;
+    background-color: var(--primary-color);
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+.to-top-btn.show {
+    right: 10px;
+}
+/* End To Top Button */
+
 /* Start Header */
 header {
     position: absolute;
@@ -325,6 +351,10 @@ header {
     cursor: pointer;
     position: relative;
     z-index: 99;
+}
+
+.burger-menu.active {
+    position: fixed;
 }
 
 .burger-menu span::before,
@@ -515,7 +545,6 @@ section.intro::before {
     background: linear-gradient(
         0deg,
         var(--primary-color) 0%,
-        var(--third-color) 89%,
         var(--secondary-color) 100%
     );
     position: absolute;
@@ -558,6 +587,7 @@ section.about {
     padding-top: var(--main-section-padding);
     padding-bottom: var(--main-section-padding);
     position: relative;
+    background-color: white;
 }
 
 section.about .container {
@@ -853,3 +883,82 @@ section.gallery .overlay {
     z-index: 1000;
 }
 /* End Gallery */
+
+/* Start Contact */
+section.contact {
+    position: relative;
+    padding-top: var(--main-section-padding);
+    padding-bottom: var(--main-section-padding);
+}
+
+section.contact::before {
+    content: "";
+    background: var(--primary-color);
+    background: linear-gradient(
+        0deg,
+        var(--primary-color) 0%,
+        var(--secondary-color) 100%
+    );
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+section.contact .container {
+    position: relative;
+    margin-top: 50px;
+    max-width: 600px;
+}
+
+section.contact form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+section.contact form > div {
+    position: relative;
+}
+
+section.contact form > div i {
+    position: absolute;
+    color: white;
+    left: 15px;
+    top: 20px;
+}
+
+section.contact form input:not([type="submit"]),
+section.contact form textarea {
+    width: 100%;
+    background-color: transparent;
+    border: 2px solid #c5c1c1;
+    border-radius: 6px;
+    padding: 15px 15px 15px 40px;
+    color: white;
+    font-size: 15px;
+    font-weight: 300;
+}
+
+section.contact form input:not([type="submit"]):focus,
+section.contact form textarea:focus {
+    outline: none;
+}
+
+section.contact form input:not([type="submit"])::placeholder,
+section.contact form textarea::placeholder {
+    color: white;
+}
+
+section.contact form textarea {
+    resize: none;
+    height: 200px;
+}
+
+section.contact form input[type="submit"] {
+    margin-top: 50px;
+    white-space: normal;
+}
+
+/* End Contact */

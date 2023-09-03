@@ -169,7 +169,7 @@ window.addEventListener("scroll", () =>
 // Make the visible section bullet active
 window.addEventListener("scroll", () => {
     sections.forEach((sec, idx) => {
-        if (isInViewport(sec)) {
+        if (isInViewport(sec, idx)) {
             let bullets = Array.from(bulletsDiv.children);
             bullets.map((el) => el.classList.remove("active"));
             bullets[idx].classList.add("active");
@@ -182,6 +182,26 @@ document.querySelector(".settings-box .reset-btn").onclick = function () {
     colorSpans[0].click();
     changeBgChoices[0].click();
     showBulletsChoices[0].click();
+};
+
+/*
+    To Top Button
+*/
+window.addEventListener("scroll", () => {
+    let scrollPosition =
+        document.documentElement.scrollTop || document.body.scrollTop;
+
+    scrollPosition > window.innerHeight * 2
+        ? document.querySelector(".to-top-btn").classList.add("show")
+        : document.querySelector(".to-top-btn").classList.remove("show");
+});
+
+document.querySelector(".to-top-btn").onclick = function () {
+    document.documentElement.scrollTo({
+        top: 0,
+        left: 0,
+        behavior: "smooth",
+    });
 };
 
 /*
@@ -351,9 +371,17 @@ function updateBullets() {
     testiBullets[currTestimonial].classList.add("active");
 }
 
-function isInViewport(element) {
+function isInViewport(element, index) {
     let scrollPosition =
         document.documentElement.scrollTop || document.body.scrollTop;
+
+    if (index === sectionsNumber - 1) {
+        return (
+            element.offsetTop - scrollPosition < window.innerHeight &&
+            element.offsetTop + element.offsetHeight ===
+                scrollPosition + window.innerHeight
+        );
+    }
 
     return element.offsetTop <= scrollPosition + 50;
 }
